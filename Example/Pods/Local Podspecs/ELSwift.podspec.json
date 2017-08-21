@@ -1,0 +1,22 @@
+{
+  "name": "ELSwift",
+  "version": "0.1.0",
+  "summary": "A short description of ELSwift.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Hiroshi-Sugimura/ELSwift",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Hiroshi-Sugimura": "hiroshi.sugimura@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Hiroshi-Sugimura/ELSwift.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ELSwift/Classes/**/*"
+}
