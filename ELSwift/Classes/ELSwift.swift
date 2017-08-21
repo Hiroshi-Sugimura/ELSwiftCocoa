@@ -404,7 +404,7 @@ public class ELSwift : NSObject {
     
     // 16進数で表現された文字列をいれるとEL_STRUCTURE形式にする ok
     public static func parseString(_ str: String ) throws -> EL_STRUCTURE {
-        var eldata: EL_STRUCTURE = EL_STRUCTURE()
+        let eldata: EL_STRUCTURE = EL_STRUCTURE()
         do{
             eldata.EHD = ELSwift.toHexArray( ELSwift.substr( str, 0, 4 ) )
             eldata.TID = ELSwift.toHexArray( ELSwift.substr( str, 4, 4 ) )
