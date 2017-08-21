@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'ELSwift_Example' do
   pod 'ELSwift', :path => '../'
+  pod 'CocoaAsyncSocket'
 
   target 'ELSwift_Tests' do
     inherit! :search_paths
