@@ -40,163 +40,132 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Demos(controller)
 
+```Swift:Demo (ViewController.swift)
+import UIKit
+import ELSwift
 
-```JavaScript:Demo
-// モジュールの機能をELとして使う
-// import functions as EL object
-var EL = require('echonet-lite');
+class ViewController: UIViewController {
 
-// 自分自身のオブジェクトを決める
-// set EOJ for this script
-// initializeで設定される，必ず何か設定しないといけない，今回はコントローラ
-// this EOJ list is required. '05ff01' is a controller.
-var objList = ['05ff01'];
+    let objectList:[String] = ["05ff01"]
 
-////////////////////////////////////////////////////////////////////////////
-// 初期化するとともに，受信動作をコールバックで登録する
-// initialize and setting callback. the callback is called by reseived packet.
-var elsocket = EL.initialize( objList, function( rinfo, els, err ) {
+    @IBOutlet weak var logView: UITextView!
+    @IBOutlet weak var btnSearch: UIButton!
 
-	if( err ){
-		console.dir(err);
-	}else{
-		console.log('==============================');
-		console.log('Get ECHONET Lite data');
-		console.log('rinfo is ');
-		console.dir(rinfo);
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        logView.text = ""
 
-		// elsはELDATA構造になっているので使いやすいかも
-		// els is ELDATA stracture.
-		console.log('----');
-		console.log('els is ');
-		console.dir(els);
-
-		// ELDATAをArrayにする事で使いやすい人もいるかも
-		// convert ELDATA into byte array.
-		console.log('----');
-		console.log( 'ECHONET Lite data array is ' );
-		console.log( EL.ELDATA2Array( els ) );
-
-		// 受信データをもとに，実は内部的にfacilitiesの中で管理している
-		// this module manages facilities by receved packets.
-		console.log('----');
-		console.log( 'Found facilities are ' );
-		console.dir( EL.facilities );
-	}
-});
-
-// NetworkのELをすべてsearchしてみよう．
-// search ECHONET nodes in local network
-EL.search();
-```
-
-
-## Demos(Devices)
-
-こんな感じで作ってみたらどうでしょうか．
-あとはairconObjのプロパティをグローバル変数として，別の関数から書き換えてもいいですよね．
-これでGetに対応できるようになります．
-
-
-```JavaScript:Demo
-//////////////////////////////////////////////////////////////////////
-// ECHONET Lite
-var EL = require('echonet-lite');
-
-// エアコンを例に
-var objList = ['013001'];
-
-// 自分のエアコンのデータ，今回はこのデータをグローバル的に使用する方法で紹介する．
-var airconObj = {
-    // super
-    "80": [0x30],  // 動作状態
-    "81": [0xff],  // 設置場所
-    "82": [0x00, 0x00, 0x66, 0x00], // EL version, 1.1
-    "88": [0x42],  // 異常状態
-    "8a": [0x00, 0x00, 0x77], // maker code
-    "9d": [0x04, 0x80, 0x8f, 0xa0, 0xb0],        // inf map, 1 Byte目は個数
-    "9e": [0x04, 0x80, 0x8f, 0xa0, 0xb0],        // set map, 1 Byte目は個数
-    "9f": [0x0d, 0x80, 0x81, 0x82, 0x88, 0x8a, 0x8f, 0x9d, 0x9e, 0x9f, 0xa0, 0xb0, 0xb3, 0xbb], // get map, 1 Byte目は個数
-    // child
-    "8f": [0x41], // 節電動作設定
-    "a0": [0x31], // 風量設定
-    "b0": [0x41], // 運転モード設定
-    "b3": [0x19], // 温度設定値
-    "bb": [0x1a] // 室内温度計測値
-};
-
-// ノードプロファイルに関しては内部処理するので，ユーザーはエアコンに関する受信処理だけを記述する．
-var elsocket = EL.initialize( objList, function( rinfo, els ) {
-    // コントローラがGetしてくるので，対応してあげる
-    // エアコンを指定してきたかチェック
-    if( els.DEOJ == '013000' || els.DEOJ == '013001' ) {
-        // ESVで振り分け，主に0x60系列に対応すればいい
-        switch( els.ESV ) {
-            ////////////////////////////////////////////////////////////////////////////////////
-            // 0x6x
-          case EL.SETI: // "60
-            break;
-          case EL.SETC: // "61"，返信必要あり
-            break;
-
-          case EL.GET: // 0x62，Get
-            for( var epc in els.DETAILs ) {
-                if( airconObj[epc] ) { // 持ってるEPCのとき
-                    EL.sendOPC1( rinfo.address, [0x01, 0x30, 0x01], EL.toHexArray(els.SEOJ), 0x72, EL.toHexArray(epc), airconObj[epc] );
-                } else { // 持っていないEPCのとき, SNA
-                    EL.sendOPC1( rinfo.address, [0x01, 0x30, 0x01], EL.toHexArray(els.SEOJ), 0x52, EL.toHexArray(epc), [0x00] );
+        do {
+            try ELSwift.initialize( objectList, { rinfo, els, err in
+                if let error = err {
+                    print (error)
+                    return
                 }
-            }
-            break;
 
-          case EL.INFREQ: // 0x63
-            break;
+                // sample 1: udp recv
+                // els is a EL_STRACTURE
+                /*
+                 var EHD : [UInt8]
+                 var TID : [UInt8]
+                 var SEOJ : [UInt8]
+                 var DEOJ : [UInt8]
+                 var EDATA: [UInt8]    // 下記はEDATAの詳細
+                 var ESV : UInt8
+                 var OPC : UInt8
+                 var DETAIL: [UInt8]
+                 var DETAILs: Dictionary<String, [UInt8]>
+                 */
 
-          case EL.SETGET: // "6e"
-            break;
-
-          default:
-            // console.log( "???" );
-            // console.dir( els );
-            break;
+                if let elsv = els {
+                    let seoj = elsv.SEOJ
+                    let esv = elsv.ESV
+                    let detail = elsv.DETAIL
+                    self.logView.text = "ip:\(rinfo.address), seoj:\(seoj), esv:\(esv), datail:\(detail)" + "\n" + self.logView.text
+                }
+            }, 4)
+        }catch let error{
+            print( error )
         }
-    }
-});
 
-//////////////////////////////////////////////////////////////////////
-// 全て立ち上がったのでINFでエアコンONの宣言
-EL.sendOPC1( '224.0.23.0', [0x01,0x30,0x01], [0x0e,0xf0,0x01], 0x73, 0x80, [0x30]);
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    @IBAction func btnSearchDown(_ sender: Any) {
+        ELSwift.search()
+    }
+
+
+}
 ```
 
 
 ## Data stracture
 
+```Swift:ELSwift
+public class ELSwift : NSObject {
+    static var isIPv6 = false
+    static var inSocket: InSocket!
+    static var outSocket: OutSocket!
+    public static let MULTI_IP: String = "224.0.23.0"
+    public static let PORT: UInt16 = 3360
+
+    // define
+    public static let SETI_SNA = 0x50
+    public static let SETC_SNA = 0x51
+    public static let GET_SNA = 0x52
+    public static let INF_SNA = 0x53
+    public static let SETGET_SNA = 0x5e
+    public static let SETI = 0x60
+    public static let SETC = 0x61
+    public static let GET = 0x62
+    public static let INF_REQ = 0x63
+    public static let SETGET = 0x6e
+    public static let SET_RES = 0x71
+    public static let GET_RES = 0x72
+    public static let INF = 0x73
+    public static let INFC = 0x74
+    public static let INFC_RES = 0x7a
+    public static let SETGET_RES = 0x7e
+    public static let EL_port = 3610
+    public static let EL_Multi = "224.0.23.0"
+    public static let EL_Multi6 = "FF02::1"
+
+    static var EL_obj: [String]!
+    static var EL_cls: [String]!
+
+    public static var Node_details: Dictionary
+    public static var facilities:Dictionary
+}
 ```
-var EL = {
-EL_port: 3610,
-EL_Multi: '224.0.23.0',
-EL_obj: null,
-facilities: {}  // ネットワーク内の機器情報リスト
-// Ex.
-// { '192.168.0.3': { '05ff01': { d6: '' } },
-// { '192.168.0.4': { '05ff01': { '80': '30', '82': '30' } } }
-};
 
 
-ELデータはこのモジュールで定義した構造で，下記のようになっています．
+```Swift:EL_STRUCTURE
+public class EL_STRUCTURE : NSObject{
+    public var EHD : [UInt8]
+    public var TID : [UInt8]
+    public var SEOJ : [UInt8]
+    public var DEOJ : [UInt8]
+    public var EDATA: [UInt8]    // 下記はEDATAの詳細
+    public var ESV : UInt8
+    public var OPC : UInt8
+    public var DETAIL: [UInt8]
+    public var DETAILs: Dictionary<String, [UInt8]>
 
-ELDATA is ECHONET Lite data stracture, which conteints
-
-ELDATA {
-  EHD : str.substr( 0, 4 ),
-  TID : str.substr( 4, 4 ),
-  SEOJ : str.substr( 8, 6 ),
-  DEOJ : str.substr( 14, 6 ),
-  EDATA: str.substr( 20 ),    // EDATA is followings
-  ESV : str.substr( 20, 2 ),
-  OPC : str.substr( 22, 2 ),
-  DETAIL: str.substr( 24 ),
-  DETAILs: EL.parseDetail( str.substr( 22, 2 ), str.substr( 24 ) )
+    override init() {
+        EHD = []
+        TID = []
+        SEOJ = []
+        DEOJ = []
+        EDATA = []
+        ESV = 0x00
+        OPC = 0x00
+        DETAIL = []
+        DETAILs = [String: [UInt8]]()
+    }
 }
 ```
 
@@ -207,20 +176,24 @@ ELDATA {
 ### 初期化，バインド, initialize
 
 ```
-EL.initialize = function ( objList, userfunc, ipVer )
+ELSwift.initialize(_ objList: [String], _ callback: ((_ rinfo:(address:String, port:UInt16), _ els: EL_STRUCTURE?, _ err: Error?) -> Void)?, _ ipVer: UInt8? ) throws -> Void
 ```
 
-そしてuserfuncはこんな感じで使いましょう。
+そしてcallbackはこんな感じで使いましょう。
 
 ```
-function( rinfo, els, err ) {
+do {
+    try ELSwift.initialize( objectList, { rinfo, els, err in
+        if let error = err {
+            print (error)
+            return
+        }
 
-	console.log('==============================');
-	if( err ) {
-		console.dir(err);
-	}else{
-		// ToDo
-	}
+        // ToDo
+
+    }, 4)
+}catch let error{
+    print( error )
 }
 ```
 
@@ -230,21 +203,21 @@ function( rinfo, els, err ) {
 * ELDATA形式
 
 ```
-EL.eldataShow = function( eldata )
+ELSwift.eldataShow(_ eldata:EL_STRUCTURE ) -> Void
 ```
 
 
 * 文字列, string
 
 ```
-EL.stringShow = function( str )
+ELSwift.stringShow(_ str: String ) throws -> Void
 ```
 
 
 * バイトデータ, byte data
 
 ```
-EL.bytesShow = function( bytes )
+ELSwift.bytesShow(_ bytes: [UInt8] ) throws -> Void
 ```
 
 
@@ -263,40 +236,45 @@ EL.bytesShow = function( bytes )
 * DetailだけをParseする，内部でよく使うけど外部で使うかわかりません．
 
 ```
-EL.parseDetail = function( opc, str )
+ELSwift.parseDetail( opc:UInt8, str:String ) throws -> Dictionary<String, [UInt8]>
 ```
 
 * byte dataを入力するとELDATA形式にする
 
 ```
-EL.parseBytes = function( bytes )
+ELSwift.parseBytes(_ bytes:[UInt8] ) throws -> EL_STRUCTURE
 ```
 
 
 * HEXで表現されたStringをいれるとELDATA形式にする
 
 ```
-EL.parseString = function( str )
+ELSwift.parseString(_ str: String ) throws -> EL_STRUCTURE
 ```
 
 
 * 文字列をいれるとELらしい切り方のStringを得る
 
 ```
-EL.getSeparatedString_String = function( str )
+ELSwift.getSeparatedString_String(_ str: String ) -> String
 ```
 
+* 文字列操作が我慢できないので作る（1Byte文字固定）  ok
+```
+ELSwift.substr(_ str:String, _ begginingIndex:UInt, _ count:UInt) -> String
+```
 
 * ELDATAをいれるとELらしい切り方のStringを得る
 
 ```
-EL.getSeparatedString_ELDATA = function( eldata )
+ELSwift.getSeparatedString_ELDATA(_ eldata : EL_STRUCTURE ) -> String
 ```
+
 
 * ELDATA形式から配列へ
 
 ```
-EL.ELDATA2Array = function( eldata )
+ELSwift.ELDATA2Array(_ eldata: EL_STRUCTURE ) throws -> [UInt8]
 ```
 
 
@@ -311,13 +289,20 @@ EL.ELDATA2Array = function( eldata )
 * 1バイトを文字列の16進表現へ（1Byteは必ず2文字にする）
 
 ```
-EL.toHexString = function( byte )
+ELSwift.toHexString(_ byte:UInt8 ) -> String
 ```
 
 * HEXのStringを数値のバイト配列へ
 
 ```
-EL.toHexArray = function( string )
+ELSwift.toHexArray(_ str: String ) -> [UInt8]
+```
+
+
+* バイト配列を文字列にかえる
+
+```
+ELSwift.bytesToString(_ bytes: [UInt8] ) throws -> String
 ```
 
 
@@ -326,35 +311,32 @@ EL.toHexArray = function( string )
 * EL送信のベース
 
 ```
-EL.sendBase = function( ip, buffer )
+ELSwift.sendBase(_ ip:String,_ data:Data ) throws -> Void
 ```
 
 * 配列の時
 
 ```
-EL.sendArray = function( ip, array )
+ELSwift.sendArray(_ ip:String,_ array:[UInt8] ) throws -> Void
 ```
 
 * ELの非常に典型的なOPC一個でやる方式
 
 ```
-EL.sendOPC1 = function( ip, seoj, deoj, esv, epc, edt)
+ELSwift.sendOPC1(_ ip:String, _ seoj:[UInt8], _ deoj:[UInt8], _ esv: UInt8, _ epc: UInt8, _ edt:[UInt8]) throws -> Void
 ```
 
 ex.
 
 ```
-EL.sendOPC1( '192.168.2.150', [0x05,0xff,0x01], [0x01,0x35,0x01], 0x61, 0x80, [0x31]);
-EL.sendOPC1( '192.168.2.150', [0x05,0xff,0x01], [0x01,0x35,0x01], 0x61, 0x80, 0x31);
-EL.sendOPC1( '192.168.2.150', "05ff01", "013501", "61", "80", "31");
-EL.sendOPC1( '192.168.2.150', "05ff01", "013501", EL.SETC, "80", "31");
+try ELSwift.sendOPC1( '192.168.2.150', [0x05,0xff,0x01], [0x01,0x35,0x01], 0x61, 0x80, [0x31]);
 ```
 
 
 * ELの非常に典型的な送信3 文字列タイプ
 
 ```
-EL.sendString = function( ip, string )
+ELSwift.sendString(_ ip:String,_ string:String ) throws -> Void
 ```
 
 
@@ -365,7 +347,7 @@ ELの受信をすべて自分で書きたい人はこれを完全に書き換えればいいとおもう．
 普通の人はinitializeのuserfuncで事足りるはず．
 
 ```
-EL.returner = function( bytes, rinfo, userfunc )
+ELSwift.returner( bytes:[UInt8], rinfo:((address:String, port:UInt16)) ) -> Void
 ```
 
 
@@ -375,18 +357,42 @@ EL.returner = function( bytes, rinfo, userfunc )
 * 機器検索
 
 ```
-EL.search = function()
+ELSwift.search() -> Void
 ```
 
 * ネットワーク内のEL機器全体情報を更新する
 
 ```
-EL.renewFacilities = function( ip, obj, opc, detail )
+ELSwift.renewFacilities = function( ip, obj, opc, detail )
+```
+
+* ネットワーク内のEL機器全体情報を更新する，受信したら勝手に実行される mada, JSONの取り扱いが難しいとDictionaryで定義しないとダメ
+
+```
+ELSwift.renewFacilities( ip:String, els: EL_STRUCTURE ) throws -> Void
 ```
 
 
-## ECHONET Lite攻略情報
+* プロパティマップをすべて取得する ok
 
+```
+ELSwift.getPropertyMaps ( ip:String, eoj:[UInt8] ) throws -> Void
+```
+
+
+* parse Propaty Map Form 2
+
+16以上のプロパティ数の時，記述形式2，出力はForm1にすること
+
+```
+ELSwift.parseMapForm2(_ bitstr:String ) -> [UInt8]
+```
+
+
+## ECHONET Lite攻略情報（）
+
+
+xxxxx
 
 * コントローラ開発者向け
 
@@ -419,14 +425,8 @@ Reseiving data as,
 The simplest sending method is 'sendOPC1.'
 
 ```
-EL.sendOPC1( '192.168.2.103', [0x05,0xff,0x01], [0x01,0x35,0x01], 0x61, 0x80, [0x30]);
+try ELSwift.sendOPC1( "192.168.2.103", [0x05,0xff,0x01], [0x01,0x35,0x01], 0x61, 0x80, [0x30]);
 ```
-
-
-
-
-
-
 
 
 ## Author
@@ -447,5 +447,6 @@ ELSwift is available under the MIT license. See the LICENSE file for more info.
 
 ## Log
 
-0.1.0 initial commit
+- 0.1.1 README.md
+- 0.1.0 initial commit
 
