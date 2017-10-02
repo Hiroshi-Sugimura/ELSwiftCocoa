@@ -98,7 +98,7 @@ class InSocket: NSObject, GCDAsyncUdpSocketDelegate {
     
     
     // 受診したらコールバックでこの関数が呼ばれる
-    func udpSocket(_ sock: GCDAsyncUdpSocket!, didReceive data: Data!, fromAddress address: Data!, withFilterContext filterContext: Any!) {
+    func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         var host: NSString?
         var port1: UInt16 = 0
         GCDAsyncUdpSocket.getHost(&host, port: &port1, fromAddress: address)
@@ -404,7 +404,7 @@ public class ELSwift : NSObject {
     
     // 16進数で表現された文字列をいれるとEL_STRUCTURE形式にする ok
     public static func parseString(_ str: String ) throws -> EL_STRUCTURE {
-        var eldata: EL_STRUCTURE = EL_STRUCTURE()
+        let eldata: EL_STRUCTURE = EL_STRUCTURE()
         do{
             eldata.EHD = ELSwift.toHexArray( ELSwift.substr( str, 0, 4 ) )
             eldata.TID = ELSwift.toHexArray( ELSwift.substr( str, 4, 4 ) )
@@ -443,7 +443,7 @@ public class ELSwift : NSObject {
     public class func substr(_ str:String, _ begginingIndex:UInt, _ count:UInt) -> String {
         let begin = str.index( str.startIndex, offsetBy: Int(begginingIndex))
         let end   = str.index( begin, offsetBy: Int(count))
-        let ret   = str.substring(with: begin..<end)
+        let ret   = String(str[begin..<end])
         return( ret )
     }
     
