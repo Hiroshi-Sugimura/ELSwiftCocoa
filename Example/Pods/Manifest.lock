@@ -1,0 +1,15 @@
+PODS:
+  - CocoaAsyncSocket (7.6.1)
+  - ELSwift (0.1.0):
+    - CocoaAsyncSocket (~> 7.6.1)
+
+DEPENDENCIES:
+  - ELSwift (= 0.1.0)
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: 7eadd3f59e1a6c84e2aefc93e9ff7b55156fe174
+  ELSwift: 1c564b12909bb427c611535d19606ac87d2d187d
+
+PODFILE CHECKSUM: 228ea5956e8cdddfb8c2986098017f2921fd0f5b
+
+COCOAPODS: 1.4.0.beta.1
