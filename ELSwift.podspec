@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ELSwift'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'ELSwift carries out the ECHONET Lite protocol.'
 
 # This description is used to generate tags and improve search results.
