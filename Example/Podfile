@@ -1,13 +1,6 @@
 use_frameworks!
 
-target 'ELSwift_Example' do
-  pod 'ELSwift', :path => '../'
-  pod 'CocoaAsyncSocket'
-
-  target 'ELSwift_Tests' do
-    inherit! :search_paths
-
-    pod 'Quick', '~> 1.0.0'
-  pod 'Nimble', '~> 5.1.1'
-  end
+target 'simpleel' do
+  pod 'ELSwift', '0.1.0'
 end
+

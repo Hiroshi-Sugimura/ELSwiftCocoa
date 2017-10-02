@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2060F9711F822C64006D4891 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2060F9701F822C64006D4891 /* AppDelegate.swift */; };
+		2060F9731F822C64006D4891 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2060F9721F822C64006D4891 /* ViewController.swift */; };
+		2060F9761F822C64006D4891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2060F9741F822C64006D4891 /* Main.storyboard */; };
+		2060F9781F822C64006D4891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2060F9771F822C64006D4891 /* Assets.xcassets */; };
+		2060F97B1F822C64006D4891 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2060F9791F822C64006D4891 /* LaunchScreen.storyboard */; };
+		8A4C76773E4F463C70223BD6 /* Pods_simpleel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2673116E2BC6265E05F27D /* Pods_simpleel.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2060F96D1F822C64006D4891 /* simpleel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = simpleel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2060F9701F822C64006D4891 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2060F9721F822C64006D4891 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2060F9751F822C64006D4891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2060F9771F822C64006D4891 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2060F97A1F822C64006D4891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2060F97C1F822C64006D4891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6171D4C2E19F6CF4DD321F7D /* Pods-simpleel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-simpleel.release.xcconfig"; path = "Pods/Target Support Files/Pods-simpleel/Pods-simpleel.release.xcconfig"; sourceTree = "<group>"; };
+		EEACC2B921F0A87DF009CB6A /* Pods-simpleel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-simpleel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-simpleel/Pods-simpleel.debug.xcconfig"; sourceTree = "<group>"; };
+		FD2673116E2BC6265E05F27D /* Pods_simpleel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_simpleel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2060F96A1F822C64006D4891 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A4C76773E4F463C70223BD6 /* Pods_simpleel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A0653AD4E40F420FA5E148D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD2673116E2BC6265E05F27D /* Pods_simpleel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2060F9641F822C64006D4891 = {
+			isa = PBXGroup;
+			children = (
+				2060F96F1F822C64006D4891 /* simpleel */,
+				2060F96E1F822C64006D4891 /* Products */,
+				6AB48FEF9C930A47245ECCE8 /* Pods */,
+				1A0653AD4E40F420FA5E148D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2060F96E1F822C64006D4891 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2060F96D1F822C64006D4891 /* simpleel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2060F96F1F822C64006D4891 /* simpleel */ = {
+			isa = PBXGroup;
+			children = (
+				2060F9701F822C64006D4891 /* AppDelegate.swift */,
+				2060F9721F822C64006D4891 /* ViewController.swift */,
+				2060F9741F822C64006D4891 /* Main.storyboard */,
+				2060F9771F822C64006D4891 /* Assets.xcassets */,
+				2060F9791F822C64006D4891 /* LaunchScreen.storyboard */,
+				2060F97C1F822C64006D4891 /* Info.plist */,
+			);
+			path = simpleel;
+			sourceTree = "<group>";
+		};
+		6AB48FEF9C930A47245ECCE8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EEACC2B921F0A87DF009CB6A /* Pods-simpleel.debug.xcconfig */,
+				6171D4C2E19F6CF4DD321F7D /* Pods-simpleel.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2060F96C1F822C64006D4891 /* simpleel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2060F97F1F822C64006D4891 /* Build configuration list for PBXNativeTarget "simpleel" */;
+			buildPhases = (
+				64BF4779FD0320888A61D5E8 /* [CP] Check Pods Manifest.lock */,
+				2060F9691F822C64006D4891 /* Sources */,
+				2060F96A1F822C64006D4891 /* Frameworks */,
+				2060F96B1F822C64006D4891 /* Resources */,
+				C5E4D710CD25D17444A186C9 /* [CP] Embed Pods Frameworks */,
+				FBBCBBF7C5A2B7EB450495AB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = simpleel;
+			productName = simpleel;
+			productReference = 2060F96D1F822C64006D4891 /* simpleel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2060F9651F822C64006D4891 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = sugimura;
+				TargetAttributes = {
+					2060F96C1F822C64006D4891 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2060F9681F822C64006D4891 /* Build configuration list for PBXProject "simpleel" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2060F9641F822C64006D4891;
+			productRefGroup = 2060F96E1F822C64006D4891 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2060F96C1F822C64006D4891 /* simpleel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2060F96B1F822C64006D4891 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2060F97B1F822C64006D4891 /* LaunchScreen.storyboard in Resources */,
+				2060F9781F822C64006D4891 /* Assets.xcassets in Resources */,
+				2060F9761F822C64006D4891 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		64BF4779FD0320888A61D5E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-simpleel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5E4D710CD25D17444A186C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-simpleel/Pods-simpleel-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/ELSwift/ELSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ELSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-simpleel/Pods-simpleel-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBBCBBF7C5A2B7EB450495AB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-simpleel/Pods-simpleel-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2060F9691F822C64006D4891 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2060F9731F822C64006D4891 /* ViewController.swift in Sources */,
+				2060F9711F822C64006D4891 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2060F9741F822C64006D4891 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2060F9751F822C64006D4891 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2060F9791F822C64006D4891 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2060F97A1F822C64006D4891 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2060F97D1F822C64006D4891 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2060F97E1F822C64006D4891 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2060F9801F822C64006D4891 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEACC2B921F0A87DF009CB6A /* Pods-simpleel.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CZU8R2KNFA;
+				INFOPLIST_FILE = simpleel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sugimulab.net.simpleel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2060F9811F822C64006D4891 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6171D4C2E19F6CF4DD321F7D /* Pods-simpleel.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CZU8R2KNFA;
+				INFOPLIST_FILE = simpleel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sugimulab.net.simpleel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2060F9681F822C64006D4891 /* Build configuration list for PBXProject "simpleel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2060F97D1F822C64006D4891 /* Debug */,
+				2060F97E1F822C64006D4891 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2060F97F1F822C64006D4891 /* Build configuration list for PBXNativeTarget "simpleel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2060F9801F822C64006D4891 /* Debug */,
+				2060F9811F822C64006D4891 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2060F9651F822C64006D4891 /* Project object */;
+}

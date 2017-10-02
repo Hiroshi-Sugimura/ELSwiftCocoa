@@ -1,6 +1,0 @@
-framework module ELSwift {
-  umbrella header "ELSwift-umbrella.h"
-
-  export *
-  module * { export * }
-}

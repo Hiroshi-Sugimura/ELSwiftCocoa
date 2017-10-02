@@ -20,9 +20,8 @@ it, simply add the following line to your Podfile:
 ```ruby
 use_frameworks!
 
-target 'ELSwift_Example' do  # << your target name
+target 'simpleel' do  # << your target name
   pod 'ELSwift'
-  pod 'CocoaAsyncSocket'
 end
 ```
 
@@ -447,6 +446,7 @@ ELSwift is available under the MIT license. See the LICENSE file for more info.
 
 ## Log
 
+- 1.0.0 Swift 4
 - 0.1.1 README.md
 - 0.1.0 initial commit
 
