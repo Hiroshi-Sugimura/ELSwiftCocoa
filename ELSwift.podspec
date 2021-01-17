@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ELSwift'
-  s.version          = '1.0.0'
+  s.version          = '2.0.0'
   s.summary          = 'ELSwift carries out the ECHONET Lite protocol.'
 
 # This description is used to generate tags and improve search results.
@@ -31,19 +31,17 @@ This library is for iOS.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
-  s.xcconfig = { 'SWIFT_VERSION' => '4' }
-  s.xcconfig = { 'SWIFT_VERSION' => '4.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0' }
+  s.xcconfig = { 'SWIFT_VERSION' => '5' }
   s.source_files = 'ELSwift/Classes/**/*'
 
-  
+
   # s.resource_bundles = {
   #   'ELSwift' => ['ELSwift/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
-  s.dependency 'CocoaAsyncSocket', '~> 7.6.1'
+  s.dependency 'CocoaAsyncSocket', '~> 7.6.5'
 
 end

@@ -5,8 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/ELSwift.svg?style=flat)](http://cocoapods.org/pods/ELSwift)
 [![Platform](https://img.shields.io/cocoapods/p/ELSwift.svg?style=flat)](http://cocoapods.org/pods/ELSwift)
 
-‚±‚Ìƒ‚ƒWƒ…[ƒ‹‚Í**ECHONET LiteƒvƒƒgƒRƒ‹**‚ğƒTƒ|[ƒg‚µ‚Ü‚·D
-ECHONET LiteƒvƒƒgƒRƒ‹‚ÍƒXƒ}[ƒgƒnƒEƒX‹@Ší‚Ì’ÊMƒvƒƒgƒRƒ‹‚Å‚·D
+ã“ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯**ECHONET Liteãƒ—ãƒ­ãƒˆã‚³ãƒ«**ã‚’ã‚µãƒãƒ¼ãƒˆã—ã¾ã™ï¼
+ECHONET Liteãƒ—ãƒ­ãƒˆã‚³ãƒ«ã¯ã‚¹ãƒãƒ¼ãƒˆãƒã‚¦ã‚¹æ©Ÿå™¨ã®é€šä¿¡ãƒ—ãƒ­ãƒˆã‚³ãƒ«ã§ã™ï¼
 
 This module provides **ECHONET Lite protocol**.
 The ECHONET Lite protocol is a communication protocol for smart home devices.
@@ -20,16 +20,29 @@ it, simply add the following line to your Podfile:
 ```ruby
 use_frameworks!
 
-target 'simpleel' do  # << your target name
+target 'simpleel' do
+  pod 'CocoaAsyncSocket'
   pod 'ELSwift'
 end
 ```
 
+or specify the version you need,
 
+```ruby
+use_frameworks!
+
+target 'simpleel' do
+  pod 'CocoaAsyncSocket'
+  pod 'ELSwift', '2.0.0'
+end
+```
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+If you don't execute the command, you need to install by a command 'sudo gem install cocoapods' or 'sudo gem install -n /usr/local/bin cocoapods'.
+
 
 ## Requirements
 
@@ -68,7 +81,7 @@ class ViewController: UIViewController {
                  var TID : [UInt8]
                  var SEOJ : [UInt8]
                  var DEOJ : [UInt8]
-                 var EDATA: [UInt8]    // ‰º‹L‚ÍEDATA‚ÌÚ×
+                 var EDATA: [UInt8]    // ä¸‹è¨˜ã¯EDATAã®è©³ç´°
                  var ESV : UInt8
                  var OPC : UInt8
                  var DETAIL: [UInt8]
@@ -148,7 +161,7 @@ public class EL_STRUCTURE : NSObject{
     public var TID : [UInt8]
     public var SEOJ : [UInt8]
     public var DEOJ : [UInt8]
-    public var EDATA: [UInt8]    // ‰º‹L‚ÍEDATA‚ÌÚ×
+    public var EDATA: [UInt8]    // ä¸‹è¨˜ã¯EDATAã®è©³ç´°
     public var ESV : UInt8
     public var OPC : UInt8
     public var DETAIL: [UInt8]
@@ -172,13 +185,13 @@ public class EL_STRUCTURE : NSObject{
 ## API
 
 
-### ‰Šú‰»CƒoƒCƒ“ƒh, initialize
+### åˆæœŸåŒ–ï¼Œãƒã‚¤ãƒ³ãƒ‰, initialize
 
 ```
 ELSwift.initialize(_ objList: [String], _ callback: ((_ rinfo:(address:String, port:UInt16), _ els: EL_STRUCTURE?, _ err: Error?) -> Void)?, _ ipVer: UInt8? ) throws -> Void
 ```
 
-‚»‚µ‚Äcallback‚Í‚±‚ñ‚ÈŠ´‚¶‚Åg‚¢‚Ü‚µ‚å‚¤B
+ãã—ã¦callbackã¯ã“ã‚“ãªæ„Ÿã˜ã§ä½¿ã„ã¾ã—ã‚‡ã†ã€‚
 
 ```
 do {
@@ -197,129 +210,129 @@ do {
 ```
 
 
-### ƒf[ƒ^•\¦Œn, data representations
+### ãƒ‡ãƒ¼ã‚¿è¡¨ç¤ºç³», data representations
 
-* ELDATAŒ`®
+* ELDATAå½¢å¼
 
 ```
 ELSwift.eldataShow(_ eldata:EL_STRUCTURE ) -> Void
 ```
 
 
-* •¶š—ñ, string
+* æ–‡å­—åˆ—, string
 
 ```
 ELSwift.stringShow(_ str: String ) throws -> Void
 ```
 
 
-* ƒoƒCƒgƒf[ƒ^, byte data
+* ãƒã‚¤ãƒˆãƒ‡ãƒ¼ã‚¿, byte data
 
 ```
 ELSwift.bytesShow(_ bytes: [UInt8] ) throws -> Void
 ```
 
 
-### •ÏŠ·Œn, converters
+### å¤‰æ›ç³», converters
 
 
 | from              |    to             |   function                         |
 |:-----------------:|:-----------------:|:----------------------------------:|
 | Bytes(=Integer[]) | ELDATA            | parseBytes(bytes)                  |
 | String            | ELDATA            | parseString(str)                   |
-| String            | EL‚Á‚Û‚¢String    | getSeparatedString_String(str)     |
-| ELDATA            | EL‚Á‚Û‚¢String    | getSeparatedString_ELDATA(eldata)  |
+| String            | ELã£ã½ã„String    | getSeparatedString_String(str)     |
+| ELDATA            | ELã£ã½ã„String    | getSeparatedString_ELDATA(eldata)  |
 | ELDATA            | Bytes(=Integer[]) | ELDATA2Array(eldata)               |
 
 
-* Detail‚¾‚¯‚ğParse‚·‚éC“à•”‚Å‚æ‚­g‚¤‚¯‚ÇŠO•”‚Åg‚¤‚©‚í‚©‚è‚Ü‚¹‚ñD
+* Detailã ã‘ã‚’Parseã™ã‚‹ï¼Œå†…éƒ¨ã§ã‚ˆãä½¿ã†ã‘ã©å¤–éƒ¨ã§ä½¿ã†ã‹ã‚ã‹ã‚Šã¾ã›ã‚“ï¼
 
 ```
 ELSwift.parseDetail( opc:UInt8, str:String ) throws -> Dictionary<String, [UInt8]>
 ```
 
-* byte data‚ğ“ü—Í‚·‚é‚ÆELDATAŒ`®‚É‚·‚é
+* byte dataã‚’å…¥åŠ›ã™ã‚‹ã¨ELDATAå½¢å¼ã«ã™ã‚‹
 
 ```
 ELSwift.parseBytes(_ bytes:[UInt8] ) throws -> EL_STRUCTURE
 ```
 
 
-* HEX‚Å•\Œ»‚³‚ê‚½String‚ğ‚¢‚ê‚é‚ÆELDATAŒ`®‚É‚·‚é
+* HEXã§è¡¨ç¾ã•ã‚ŒãŸStringã‚’ã„ã‚Œã‚‹ã¨ELDATAå½¢å¼ã«ã™ã‚‹
 
 ```
 ELSwift.parseString(_ str: String ) throws -> EL_STRUCTURE
 ```
 
 
-* •¶š—ñ‚ğ‚¢‚ê‚é‚ÆEL‚ç‚µ‚¢Ø‚è•û‚ÌString‚ğ“¾‚é
+* æ–‡å­—åˆ—ã‚’ã„ã‚Œã‚‹ã¨ELã‚‰ã—ã„åˆ‡ã‚Šæ–¹ã®Stringã‚’å¾—ã‚‹
 
 ```
 ELSwift.getSeparatedString_String(_ str: String ) -> String
 ```
 
-* •¶š—ñ‘€ì‚ª‰ä–‚Å‚«‚È‚¢‚Ì‚Åì‚éi1Byte•¶šŒÅ’èj  ok
+* æ–‡å­—åˆ—æ“ä½œãŒæˆ‘æ…¢ã§ããªã„ã®ã§ä½œã‚‹ï¼ˆ1Byteæ–‡å­—å›ºå®šï¼‰  ok
 ```
 ELSwift.substr(_ str:String, _ begginingIndex:UInt, _ count:UInt) -> String
 ```
 
-* ELDATA‚ğ‚¢‚ê‚é‚ÆEL‚ç‚µ‚¢Ø‚è•û‚ÌString‚ğ“¾‚é
+* ELDATAã‚’ã„ã‚Œã‚‹ã¨ELã‚‰ã—ã„åˆ‡ã‚Šæ–¹ã®Stringã‚’å¾—ã‚‹
 
 ```
 ELSwift.getSeparatedString_ELDATA(_ eldata : EL_STRUCTURE ) -> String
 ```
 
 
-* ELDATAŒ`®‚©‚ç”z—ñ‚Ö
+* ELDATAå½¢å¼ã‹ã‚‰é…åˆ—ã¸
 
 ```
 ELSwift.ELDATA2Array(_ eldata: EL_STRUCTURE ) throws -> [UInt8]
 ```
 
 
-* •ÏŠ·•\
+* å¤‰æ›è¡¨
 
 | from              |    to          |   function                         |
 |:-----------------:|:--------------:|:----------------------------------:|
-| Byte              | 16i•\Œ»String | toHexString(byte)                  |
-| 16i•\Œ»String    |  Integer[]     | toHexArray(str)                    |
+| Byte              | 16é€²è¡¨ç¾String | toHexString(byte)                  |
+| 16é€²è¡¨ç¾String    |  Integer[]     | toHexArray(str)                    |
 
 
-* 1ƒoƒCƒg‚ğ•¶š—ñ‚Ì16i•\Œ»‚Öi1Byte‚Í•K‚¸2•¶š‚É‚·‚éj
+* 1ãƒã‚¤ãƒˆã‚’æ–‡å­—åˆ—ã®16é€²è¡¨ç¾ã¸ï¼ˆ1Byteã¯å¿…ãš2æ–‡å­—ã«ã™ã‚‹ï¼‰
 
 ```
 ELSwift.toHexString(_ byte:UInt8 ) -> String
 ```
 
-* HEX‚ÌString‚ğ”’l‚ÌƒoƒCƒg”z—ñ‚Ö
+* HEXã®Stringã‚’æ•°å€¤ã®ãƒã‚¤ãƒˆé…åˆ—ã¸
 
 ```
 ELSwift.toHexArray(_ str: String ) -> [UInt8]
 ```
 
 
-* ƒoƒCƒg”z—ñ‚ğ•¶š—ñ‚É‚©‚¦‚é
+* ãƒã‚¤ãƒˆé…åˆ—ã‚’æ–‡å­—åˆ—ã«ã‹ãˆã‚‹
 
 ```
 ELSwift.bytesToString(_ bytes: [UInt8] ) throws -> String
 ```
 
 
-### ‘—M, send
+### é€ä¿¡, send
 
-* EL‘—M‚Ìƒx[ƒX
+* ELé€ä¿¡ã®ãƒ™ãƒ¼ã‚¹
 
 ```
 ELSwift.sendBase(_ ip:String,_ data:Data ) throws -> Void
 ```
 
-* ”z—ñ‚Ì
+* é…åˆ—ã®æ™‚
 
 ```
 ELSwift.sendArray(_ ip:String,_ array:[UInt8] ) throws -> Void
 ```
 
-* EL‚Ì”ñí‚É“TŒ^“I‚ÈOPCˆêŒÂ‚Å‚â‚é•û®
+* ELã®éå¸¸ã«å…¸å‹çš„ãªOPCä¸€å€‹ã§ã‚„ã‚‹æ–¹å¼
 
 ```
 ELSwift.sendOPC1(_ ip:String, _ seoj:[UInt8], _ deoj:[UInt8], _ esv: UInt8, _ epc: UInt8, _ edt:[UInt8]) throws -> Void
@@ -332,18 +345,18 @@ try ELSwift.sendOPC1( '192.168.2.150', [0x05,0xff,0x01], [0x01,0x35,0x01], 0x61,
 ```
 
 
-* EL‚Ì”ñí‚É“TŒ^“I‚È‘—M3 •¶š—ñƒ^ƒCƒv
+* ELã®éå¸¸ã«å…¸å‹çš„ãªé€ä¿¡3 æ–‡å­—åˆ—ã‚¿ã‚¤ãƒ—
 
 ```
 ELSwift.sendString(_ ip:String,_ string:String ) throws -> Void
 ```
 
 
-### óMƒf[ƒ^‚ÌŠ®‘SƒRƒ“ƒgƒ[ƒ‹, Full control method for received data.
+### å—ä¿¡ãƒ‡ãƒ¼ã‚¿ã®å®Œå…¨ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«, Full control method for received data.
 
-EL‚ÌóMƒf[ƒ^‚ğU‚è•ª‚¯‚é‚æC‰½‚Æ‚©‚µ‚æ‚¤D
-EL‚ÌóM‚ğ‚·‚×‚Ä©•ª‚Å‘‚«‚½‚¢l‚Í‚±‚ê‚ğŠ®‘S‚É‘‚«Š·‚¦‚ê‚Î‚¢‚¢‚Æ‚¨‚à‚¤D
-•’Ê‚Ìl‚Íinitialize‚Ìuserfunc‚Å–‘«‚è‚é‚Í‚¸D
+ELã®å—ä¿¡ãƒ‡ãƒ¼ã‚¿ã‚’æŒ¯ã‚Šåˆ†ã‘ã‚‹ã‚ˆï¼Œä½•ã¨ã‹ã—ã‚ˆã†ï¼
+ELã®å—ä¿¡ã‚’ã™ã¹ã¦è‡ªåˆ†ã§æ›¸ããŸã„äººã¯ã“ã‚Œã‚’å®Œå…¨ã«æ›¸ãæ›ãˆã‚Œã°ã„ã„ã¨ãŠã‚‚ã†ï¼
+æ™®é€šã®äººã¯initializeã®userfuncã§äº‹è¶³ã‚Šã‚‹ã¯ãšï¼
 
 ```
 ELSwift.returner( bytes:[UInt8], rinfo:((address:String, port:UInt16)) ) -> Void
@@ -351,28 +364,28 @@ ELSwift.returner( bytes:[UInt8], rinfo:((address:String, port:UInt16)) ) -> Void
 
 
 
-### ELCãˆÊ‚Ì’ÊMè‘±‚«
+### ELï¼Œä¸Šä½ã®é€šä¿¡æ‰‹ç¶šã
 
-* ‹@ŠíŒŸõ
+* æ©Ÿå™¨æ¤œç´¢
 
 ```
 ELSwift.search() -> Void
 ```
 
-* ƒlƒbƒgƒ[ƒN“à‚ÌEL‹@Ší‘S‘Ìî•ñ‚ğXV‚·‚é
+* ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯å†…ã®ELæ©Ÿå™¨å…¨ä½“æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹
 
 ```
 ELSwift.renewFacilities = function( ip, obj, opc, detail )
 ```
 
-* ƒlƒbƒgƒ[ƒN“à‚ÌEL‹@Ší‘S‘Ìî•ñ‚ğXV‚·‚éCóM‚µ‚½‚çŸè‚ÉÀs‚³‚ê‚é mada, JSON‚Ìæ‚èˆµ‚¢‚ª“ï‚µ‚¢‚ÆDictionary‚Å’è‹`‚µ‚È‚¢‚Æƒ_ƒ
+* ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯å†…ã®ELæ©Ÿå™¨å…¨ä½“æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹ï¼Œå—ä¿¡ã—ãŸã‚‰å‹æ‰‹ã«å®Ÿè¡Œã•ã‚Œã‚‹ mada, JSONã®å–ã‚Šæ‰±ã„ãŒé›£ã—ã„ã¨Dictionaryã§å®šç¾©ã—ãªã„ã¨ãƒ€ãƒ¡
 
 ```
 ELSwift.renewFacilities( ip:String, els: EL_STRUCTURE ) throws -> Void
 ```
 
 
-* ƒvƒƒpƒeƒBƒ}ƒbƒv‚ğ‚·‚×‚Äæ“¾‚·‚é ok
+* ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒãƒƒãƒ—ã‚’ã™ã¹ã¦å–å¾—ã™ã‚‹ ok
 
 ```
 ELSwift.getPropertyMaps ( ip:String, eoj:[UInt8] ) throws -> Void
@@ -381,22 +394,22 @@ ELSwift.getPropertyMaps ( ip:String, eoj:[UInt8] ) throws -> Void
 
 * parse Propaty Map Form 2
 
-16ˆÈã‚ÌƒvƒƒpƒeƒB”‚ÌC‹LqŒ`®2Co—Í‚ÍForm1‚É‚·‚é‚±‚Æ
+16ä»¥ä¸Šã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£æ•°ã®æ™‚ï¼Œè¨˜è¿°å½¢å¼2ï¼Œå‡ºåŠ›ã¯Form1ã«ã™ã‚‹ã“ã¨
 
 ```
 ELSwift.parseMapForm2(_ bitstr:String ) -> [UInt8]
 ```
 
 
-## ECHONET LiteU—ªî•ñij
+## ECHONET Liteæ”»ç•¥æƒ…å ±ï¼ˆï¼‰
 
 
 xxxxx
 
-* ƒRƒ“ƒgƒ[ƒ‰ŠJ”­ÒŒü‚¯
+* ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©é–‹ç™ºè€…å‘ã‘
 
-‚¨‚»‚ç‚­ˆê”Ôg‚¢‚â‚·‚¢óMƒf[ƒ^‰ğÍ‚ÍEL.facilities‚ğ‚»‚Ì‚Ü‚Üread‚·‚é‚±‚Æ‚©‚àD
-‚½‚Æ‚¦‚ÎC‚»‚Ì‚Ü‚Ü•\¦‚·‚é‚ÆC
+ãŠãã‚‰ãä¸€ç•ªä½¿ã„ã‚„ã™ã„å—ä¿¡ãƒ‡ãƒ¼ã‚¿è§£æã¯EL.facilitiesã‚’ãã®ã¾ã¾readã™ã‚‹ã“ã¨ã‹ã‚‚ï¼
+ãŸã¨ãˆã°ï¼Œãã®ã¾ã¾è¡¨ç¤ºã™ã‚‹ã¨ï¼Œ
 
 Probably, easy analysis of the received data is to display directory.
 For example,
@@ -405,7 +418,7 @@ For example,
 console.dir( EL.facilities );
 ```
 
-ƒf[ƒ^‚Í‚±‚ñ‚ÈŠ´‚¶D
+ãƒ‡ãƒ¼ã‚¿ã¯ã“ã‚“ãªæ„Ÿã˜ï¼
 
 Reseiving data as,
 
@@ -418,8 +431,8 @@ Reseiving data as,
 ```
 
 
-‚Ü‚½Cƒf[ƒ^‘—M‚Åˆê”Ôg‚¢‚â‚·‚»‚¤‚È‚Ì‚ÍsendOPC1‚¾‚Æ‚¨‚à‚¤D
-‚±‚ê‚Ì‘g‚İ‡‚í‚¹‚ÄECHONET Lite‚Í‚Ù‚Æ‚ñ‚Ç‘€ì‚Å‚«‚é‚Ì‚Å‚Í‚È‚©‚ë‚¤‚©D
+ã¾ãŸï¼Œãƒ‡ãƒ¼ã‚¿é€ä¿¡ã§ä¸€ç•ªä½¿ã„ã‚„ã™ãã†ãªã®ã¯sendOPC1ã ã¨ãŠã‚‚ã†ï¼
+ã“ã‚Œã®çµ„ã¿åˆã‚ã›ã¦ECHONET Liteã¯ã»ã¨ã‚“ã©æ“ä½œã§ãã‚‹ã®ã§ã¯ãªã‹ã‚ã†ã‹ï¼
 
 The simplest sending method is 'sendOPC1.'
 
@@ -430,9 +443,9 @@ try ELSwift.sendOPC1( "192.168.2.103", [0x05,0xff,0x01], [0x01,0x35,0x01], 0x61,
 
 ## Author
 
-_“ŞìH‰È‘åŠw  ‘n‘¢HŠw•”  ƒz[ƒ€ƒGƒŒƒNƒgƒƒjƒNƒXŠJ”­Šw‰ÈD
+ç¥å¥ˆå·å·¥ç§‘å¤§å­¦  å‰µé€ å·¥å­¦éƒ¨  ãƒ›ãƒ¼ãƒ ã‚¨ãƒ¬ã‚¯ãƒˆãƒ­ãƒ‹ã‚¯ã‚¹é–‹ç™ºå­¦ç§‘ï¼
 
-™‘º@”
+æ‰æ‘ã€€åš
 
 Dept. of Home Electronics, Faculty of Creative Engineering, Kanagawa Institute of Technology.
 
@@ -446,7 +459,7 @@ ELSwift is available under the MIT license. See the LICENSE file for more info.
 
 ## Log
 
-- 1.0.0 Swift 4
+- 2.0.0 Swift 5, Xcode 12.3, CocoaAsyncSocket 7.6.5
+- 1.0.0 Swift 4, Xcode 8.0, CocoaAsyncSocket 7.6.3
 - 0.1.1 README.md
 - 0.1.0 initial commit
-

@@ -340,7 +340,7 @@ public class ELSwift : NSObject {
             var epc:UInt8 = 0
             var pdc:UInt8 = 0
             var edt:[UInt8] = []
-            var array:[UInt8] = ELSwift.toHexArray( str )  // edts
+            let array:[UInt8] = ELSwift.toHexArray( str )  // edts
             
             // OPCループ
             for _ in (0 ..< opc ) { // i使ってないとかアホなwarning出るけど無視
@@ -518,8 +518,13 @@ public class ELSwift : NSObject {
     // 配列の時 ok
     public static func sendArray(_ ip:String,_ array:[UInt8] ) throws -> Void{
         do{
+            // swift v3ではこれでOK
             // ELSwift.sendBase( ip, Data(buffer: UnsafeBufferPointer(start: &array, count: array.count)))
-            try ELSwift.sendBase( ip, Data(buffer: UnsafeBufferPointer(start: array, count: array.count)))
+            // swift v4ではこれでOK
+            //try ELSwift.sendBase( ip, Data(buffer: UnsafeBufferPointer(start: array, count: array.count)))
+            // swift v5ではこれ
+            let data = Data(bytes: array, count: array.count)
+            try ELSwift.sendBase( ip, data)
         }catch let error{
             throw error
         }
@@ -853,7 +858,7 @@ public class ELSwift : NSObject {
         
         var ret: [UInt8] = []
         var val:UInt = 0x80
-        var array:[UInt8] = ELSwift.toHexArray( bitstr )
+        let array:[UInt8] = ELSwift.toHexArray( bitstr )
         
         // bit loop
         for bit:UInt8 in (0..<8 ) {
