@@ -12,6 +12,13 @@ pod trunk push ELSwift.podspec
 pod trunk info ELSwift
 ```
 
+- 新しいPCだとRegisterが求められる？
+
+```
+pod trunk register hiroshi.sugimura@gmail.com
+# Emailチェック
+```
+
 ## Trouble shoot
 
 ### unable to find utility "simctl",
