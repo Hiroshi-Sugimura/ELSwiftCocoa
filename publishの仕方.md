@@ -3,7 +3,7 @@
 - pod trunk push でアップする
 
 ```
-pod trunk push ELSwift
+pod trunk push ELSwift.podspec
 ```
 
 - 確認
