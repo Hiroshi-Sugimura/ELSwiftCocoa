@@ -1,5 +1,7 @@
 # Overview
 
+ELSwift for Cocoa (will Deprecated)
+
 [![CI Status](http://img.shields.io/travis/Hiroshi-Sugimura/ELSwift.svg?style=flat)](https://travis-ci.org/Hiroshi-Sugimura/ELSwift)
 [![Version](https://img.shields.io/cocoapods/v/ELSwift.svg?style=flat)](http://cocoapods.org/pods/ELSwift)
 [![License](https://img.shields.io/cocoapods/l/ELSwift.svg?style=flat)](http://cocoapods.org/pods/ELSwift)
@@ -11,6 +13,8 @@ ECHONET Liteプロトコルはスマートハウス機器の通信プロトコ�
 This module provides **ECHONET Lite protocol**.
 The ECHONET Lite protocol is a communication protocol for smart home devices.
 
+CocoaAsyncSocketを使っており、Ver.13以前のiOSで利用していたものです。
+それ以降はNetwork.Frameworkを利用したSwift Package Manager版に移行します。
 
 ## Installation
 
