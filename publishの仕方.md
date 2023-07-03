@@ -1,4 +1,9 @@
 - podspecをlintする
+
+```
+pod spec lint ELSwift.podspec
+```
+
 - 問題なければpassed validation
 - pod trunk push でアップする
 

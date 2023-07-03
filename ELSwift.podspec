@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ELSwift'
-  s.version          = '2.0.0'
+  s.version          = '2.0.1'
   s.summary          = 'ELSwift carries out the ECHONET Lite protocol.'
 
   s.description      = <<-DESC
@@ -17,10 +17,10 @@ The protocol is for connecting and controlling home appliances.
 This library is for iOS.
                        DESC
 
-  s.homepage         = 'https://github.com/Hiroshi-Sugimura/ELSwift'
+  s.homepage         = 'https://github.com/Hiroshi-Sugimura/ELSwiftCocoa'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Hiroshi-Sugimura' => 'hiroshi.sugimura@gmail.com' }
-  s.source           = { :git => 'https://github.com/Hiroshi-Sugimura/ELSwift.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/Hiroshi-Sugimura/ELSwiftCocoa.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
   s.swift_versions = '5.0'
   s.source_files = 'ELSwift/Classes/**/*'

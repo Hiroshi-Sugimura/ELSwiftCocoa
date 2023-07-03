@@ -9,6 +9,7 @@ ELSwift for Cocoa (will Deprecated)
 
 このモジュールは**ECHONET Liteプロトコル**をサポートします．
 ECHONET Liteプロトコルはスマートハウス機器の通信プロトコルです．
+CocoaPods用で、古いiOS（ver. 11以前程度）にしか対応していません。
 
 This module provides **ECHONET Lite protocol**.
 The ECHONET Lite protocol is a communication protocol for smart home devices.
